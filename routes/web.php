@@ -19,5 +19,11 @@ Route::get('/', function () {
 
 
 Route::get('/home', 'dashboardAdminController@index')->name('home');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
+    Route::prefix('siswa')->group( function () {
+        Route::get('/', 'SiswaController@index');
+        Route::post('/store', 'SiswaController@storeSiswa');
+    });
+});
 
 Auth::routes();
