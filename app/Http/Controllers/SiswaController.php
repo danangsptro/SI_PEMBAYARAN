@@ -12,7 +12,8 @@ class SiswaController extends Controller
 {
     public function index()
     {
-        return view('backend.siswa.index');
+        $siswa = User::with([])->get();
+        return view('backend.siswa.index', compact('siswa'));
     }
 
     public function storeSiswa(Request $request, $id=null)

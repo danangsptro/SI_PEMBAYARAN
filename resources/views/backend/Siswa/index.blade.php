@@ -94,13 +94,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($siswa as $siswas)
                                     <tr>
-                                        <td>Bambang </td>
-                                        <td>Bambang </td>
-                                        <td>Bambang </td>
-                                        <td>Bambang </td>
-                                        <td>Bambang </td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $siswas->name }} </td>
+                                        <td>{{ $siswas->nisn }}</td>
+                                        <td>{{ $siswas->jk }}</td>
+                                        <td> 
+                                            <div class="d-flex justify-content-center">
+                                                <a href="" class="btn btn-warning m-1">EDIT</a>
+                                                <a href="" class="btn btn-danger m-1">Hapus</a>
+                                            </div>
+                                        </td>
                                     </tr>
+                                    @endforeach
                                 </tbody>
                                 
                             </table>

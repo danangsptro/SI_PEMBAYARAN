@@ -13,7 +13,7 @@
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href=""> <i class="menu-icon fa fa-dashboard"></i>Dashboard
+                    <a href="{{ url('admin/home') }}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard
                     </a>
                 </li>
                 {{-- <li>
@@ -22,23 +22,13 @@
                 </li> --}}
                 <h3 class="menu-title">UI elements</h3>
 
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Kode</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li>
-                                <i class="fa fa-table"></i><a href="">Kode</a>
-                            </li>
-                        </ul>
-                    </li>
+                <li>
+                    <a href=""> <i class="menu-icon fa fa-folder"></i>Siswa
+                    </a>
+                </li>
 
                 <h3 class="menu-title">Data</h3>
-
-                    <li>
-                        <a href=""> <i class="menu-icon fa fa-folder"></i>Test
-                        </a>
-                    </li>
-                <li class="menu-item-has-children dropdown">
+                {{-- <li class="menu-item-has-children dropdown">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Laporan</a>
                     <ul class="sub-menu children dropdown-menu">
@@ -56,7 +46,7 @@
                                 <i class="fa fa-table"></i><a href="">User</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
             </ul>
         </div>
     </nav>
