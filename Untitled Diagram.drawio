@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-12-15T07:38:00.633Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36" etag="QlQo6A6ZXAVe-mqiRAw1" version="15.9.4" type="github">
+<mxfile host="app.diagrams.net" modified="2021-12-15T07:40:15.769Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36" etag="7wSF4cS53V2AWpR_GIWt" version="15.9.4" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="1422" dy="697" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -47,10 +47,10 @@
         <mxCell id="quVfibnMXZJxad-VhryH-7" value="user_id - bigInt (1)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="quVfibnMXZJxad-VhryH-5" vertex="1">
           <mxGeometry y="78" width="180" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="quVfibnMXZJxad-VhryH-12" value="invoice - varchar (20)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="quVfibnMXZJxad-VhryH-5" vertex="1">
+        <mxCell id="1Tr3alu5wVLJ2qFF6vgg-0" value="invoice - varchar (20)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="quVfibnMXZJxad-VhryH-5">
           <mxGeometry y="104" width="180" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="1Tr3alu5wVLJ2qFF6vgg-0" value="user_id - bigInt (1)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="quVfibnMXZJxad-VhryH-5">
+        <mxCell id="quVfibnMXZJxad-VhryH-12" value="created_at - timestamp" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="quVfibnMXZJxad-VhryH-5" vertex="1">
           <mxGeometry y="130" width="180" height="26" as="geometry" />
         </mxCell>
         <mxCell id="quVfibnMXZJxad-VhryH-13" value="update_at - timestamp" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rounded=0;shadow=0;html=0;" parent="quVfibnMXZJxad-VhryH-5" vertex="1">
