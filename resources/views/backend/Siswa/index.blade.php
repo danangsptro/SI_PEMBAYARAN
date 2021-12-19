@@ -12,7 +12,7 @@
                         <h3 class="card-title">Data Siswa</h3>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        Launch demo modal
+                        Add Data Siswa
                         </button>
   
   
@@ -20,7 +20,7 @@
                             <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Insert Data Siswa</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -48,8 +48,14 @@
                                             </div> 
                                             <div class="form-group col-lg-6">
                                                 <label for="email">Email</label>
-                                                <input type="text" name="email" class="form-control @error('nisn') ins-invalid @enderror"  value="{{ old('email')}}" required>
+                                                <input type="text" name="email" class="form-control @error('email') ins-invalid @enderror"  value="{{ old('email')}}" required>
                                             </div>                                 
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-lg-12">
+                                                <label for="password">Password</label>
+                                                <input type="text" class="form-control" disabled name="password" @error('password') ins-invalid @enderror"  value="qwerty" required>
+                                            </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-lg-12">
@@ -60,7 +66,6 @@
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
                                 </div>
                             </div>
                             </div>
@@ -95,18 +100,75 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($siswa as $siswas)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $siswas->name }} </td>
-                                        <td>{{ $siswas->nisn }}</td>
-                                        <td>{{ $siswas->jk }}</td>
-                                        <td> 
-                                            <div class="d-flex justify-content-center">
-                                                <a href="" class="btn btn-warning m-1">EDIT</a>
-                                                <a href="" class="btn btn-danger m-1">Hapus</a>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        @if($siswas->role != "Kepala-Sekolah" && $siswas->role != "Staff"  )
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $siswas->name }} </td>
+                                                <td>{{ $siswas->nisn }}</td>
+                                                <td>{{ $siswas->jk }}</td>
+                                                <td> 
+                                                    <div class="d-flex justify-content-center">
+                                                        <a href=""  class="btn btn-warning m-1" data-toggle="modal" data-target="#edit{{ $loop->iteration }}">EDIT</a>
+                                                        <a href="{{ url('admin/siswa/delete/'.$siswas->id) }}" class="btn btn-danger m-1">Hapus</a>
+
+                                                        <div class="modal fade" id="edit{{ $loop->iteration }}" tabindex="-1" role="dialog" aria-labelledby="edit{{ $loop->iteration }}Label" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                <h5 class="modal-title" id="edit{{ $loop->iteration }}Label">Update Data Siswa</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form action="{{ url('admin/siswa/store/'.$siswas->id) }}" method="POST">
+                                                                        @csrf
+                                                                        <div class="form-row">
+                                                                            <div class="form-group col-lg-6">
+                                                                                <label for="name">Name</label>
+                                                                                <input type="text" name="name" class="form-control @error('name') ins-invalid @enderror"  value="{{ $siswas->name }}" required>
+                                                                            </div>
+                                                                            <div class="form-group col-lg-6">
+                                                                                <label for="nisn">NISN</label>
+                                                                                <input type="text" name="nisn" class="form-control @error('nisn') ins-invalid @enderror"  value="{{ $siswas->nisn }}" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-row">
+                                                                            <div class="form-group col-lg-6">
+                                                                                <label for="jk">Jenis Kelamin</label>
+                                                                                <select class="form-control" id="exampleFormControlSelect1" name="jk">
+                                                                                    <option value="Laki-laki {{ $siswas->jk == 'Laki-laki' ? 'selected' : '' }}">Laki-laki</option>
+                                                                                    <option value="Perempuan {{ $siswas->jk == 'Perempuan' ? 'selected' : '' }}">Perempuan</option>
+                                                                                </select>
+                                                                            </div> 
+                                                                            <div class="form-group col-lg-6">
+                                                                                <label for="email">Email</label>
+                                                                                <input type="text" name="email" class="form-control @error('email') ins-invalid @enderror"  value="{{ $siswas->email }}" required>
+                                                                            </div>                                 
+                                                                        </div>
+                                                                        <div class="form-row">
+                                                                            <div class="form-group col-lg-12">
+                                                                                <label for="password">Password</label>
+                                                                                <input type="text" class="form-control" name="password_exist" @error('password') ins-invalid @enderror"  value="{{ $siswas->password_exist }}" required>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-row">
+                                                                            <div class="form-group col-lg-12">
+                                                                                <button class="btn btn-success" type="submit">Simpan</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>     
+                                        @endif
                                     @endforeach
                                 </tbody>
                                 
