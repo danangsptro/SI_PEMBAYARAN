@@ -22,7 +22,7 @@
                 </li> --}}
                 <h3 class="menu-title">UI elements</h3>
 
-                <li>
+                <li> 
                     <a href="{{ url('/admin/siswa') }}"> <i class="menu-icon fa fa-folder"></i>Siswa
                     </a>
                 </li>
