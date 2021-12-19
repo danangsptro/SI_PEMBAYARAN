@@ -17,58 +17,37 @@
                     </a>
                 </li>
                 {{-- <li>
-                    <a href="{{ route('index-user') }}"> <i class="menu-icon fa fa-user"></i>User 
+                    <a href="{{ route('index-user') }}"> <i class="menu-icon fa fa-user"></i>User
                     </a>
                 </li> --}}
-                <h3 class="menu-title">UI elements</h3>
+                <h3 class="menu-title">Data</h3>
 
-                <li> 
-                    <a href="{{ url('/admin/siswa') }}"> <i class="menu-icon fa fa-folder"></i>Siswa
+                <li>
+                    <a href="{{ url('/admin/siswa') }}"> <i class="menu-icon fa fa-user"></i>Siswa
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{ url('/admin/pembayaran') }}"> <i class="menu-icon fa fa-folder"></i>Jadwal Pembayaran
+                    <a href="{{ url('/admin/pembayaran') }}"> <i class="menu-icon fa fa-calendar"></i>Jadwal Pembayaran
                     </a>
                 </li>
- 
+
                 <li>
                     <a href="{{ url('/admin/transaksi') }}"> <i class="menu-icon fa fa-folder"></i>Pembayaran SPP
                     </a>
                 </li>
-
+                {{-- <h3 class="menu-title">Data</h3>
                 <li>
                     <a>
                         <form action="{{ route('logout') }}" method="POST" class="">
                             @csrf
                             <button type="submit" class="btn btn-danger mt-1"><i class="fas fa-sign-out-alt"></i>
                         <p class="m-2" style="color: white">Logout</p>
-                            
+
                             </button>
                         </form>
                     </a>
-                </li>
-
-                <h3 class="menu-title">Data</h3>
-                {{-- <li class="menu-item-has-children dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Laporan</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li>
-                            <i class="fa fa-table"></i><a href="">Lihat Laporan</a>
-                        </li>
-                    </ul>
-                </li>
-                    <h3 class="menu-title">USER</h3>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Test</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li>
-                                <i class="fa fa-table"></i><a href="">User</a>
-                            </li>
-                        </ul>
-                    </li> --}}
+                </li> --}}
             </ul>
         </div>
     </nav>
