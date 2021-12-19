@@ -17,7 +17,7 @@
                     </a>
                 </li>
                 {{-- <li>
-                    <a href="{{ route('index-user') }}"> <i class="menu-icon fa fa-user"></i>User
+                    <a href="{{ route('index-user') }}"> <i class="menu-icon fa fa-user"></i>User 
                     </a>
                 </li> --}}
                 <h3 class="menu-title">UI elements</h3>
