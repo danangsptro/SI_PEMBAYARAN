@@ -23,7 +23,27 @@
                 <h3 class="menu-title">UI elements</h3>
 
                 <li>
-                    <a href=""> <i class="menu-icon fa fa-folder"></i>Siswa
+                    <a href="{{ url('/admin/siswa') }}"> <i class="menu-icon fa fa-folder"></i>Siswa
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url('/admin/pembayaran') }}"> <i class="menu-icon fa fa-folder"></i>Jadwal Pembayaran
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ url('/admin/transaksi') }}"> <i class="menu-icon fa fa-folder"></i>Pembayaran SPP
+                    </a>
+                </li>
+
+                <li>
+                    <a>
+                        <form action="{{ route('logout') }}" method="POST" class="">
+                            @csrf
+                            <button type="submit" class="btn btn-danger mt-1"><i class="fas fa-sign-out-alt"></i></button>
+                        </form>
+                        <p class="m-2">Logout</p>
                     </a>
                 </li>
 

@@ -3,20 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use Exception;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Hash;
+use App\Pembayaran;
 
-class SiswaController extends Controller
+class PembayaranController extends Controller
 {
     public function index()
     {
-        $siswa = User::with([])->get();
-        return view('backend.siswa.index', compact('siswa'));
+        $pembayaran = Pembayaran::with([])->orderBy('id', 'DESC')->get();
+        return view('backend.Pembayaran.index', compact('pembayaran'));
     }
 
-    public function storeSiswa(Request $request, $id=null)
+    public function storePembayaran(Request $request, $id=null)
     {
         try {
             // Validator::make($request->all(),[
@@ -29,20 +26,16 @@ class SiswaController extends Controller
     
     
             if($id){
-                $user = User::where('id', $id)->with([])->first();
-                if(!$user){
+                $pembayaran = Pembayaran::where('id', $id)->with([])->first();
+                if(!$pembayaran){
                     return redirect()->back()->with([
                         'message'   => 'Tidak ada siswa dengan id tersebut',
                         'style'     => 'danger' 
                     ]);
                 }
-                $user->name = $request->name;
-                $user->role = "Siswa";
-                $user->nisn = $request->nisn;
-                $user->jk = $request->jk;
-                $user->password_exist = $request->password_exist;
-                $user->password = Hash::make($request->password_exist);
-                $user->save(); 
+                $pembayaran->title_pembayaran = $request->title_pembayaran;
+                $pembayaran->tgl_mulai = $request->tgl_mulai;
+                $pembayaran->save(); 
     
                 return redirect()->back()->with([
                     'message'   => 'Update siswa success',
@@ -50,14 +43,10 @@ class SiswaController extends Controller
                 ]);
     
             }
-            $user = new User();
-            $user->name = $request->name;
-            $user->role = "Siswa";
-            $user->nisn = $request->nisn;
-            $user->jk = $request->jk;
-            $user->email = $request->email;
-            $user->password = Hash::make($request->password);
-            $user->save();
+            $pembayaran = new pembayaran();
+            $pembayaran->title_pembayaran = $request->title_pembayaran;
+            $pembayaran->tgl_mulai = $request->tgl_mulai;
+            $pembayaran->save();
             
             return redirect()->back()->with([
                 'style' => 'success',
@@ -72,19 +61,19 @@ class SiswaController extends Controller
         }
     }
     
-    public function deleteSiswa($id)
+    public function deletePembayaran($id)
     {
         try {
-            $user = User::where('id', $id)->with([])->first();
-            $user->delete();
+            $pembayaran = Pembayaran::where('id', $id)->with([])->first();
+            $pembayaran->delete();
             return redirect()->back()->with([
                 'style' => 'success',
-                'message' => "Delete siswa Successfully"
+                'message' => "Delete jadwal pembayaran Successfully"
             ]);
         } catch (\Exception $e) {
             return redirect()->back()->with([
                 'style' => 'success',
-                'message' => "Delete siswa error :".$e->getMessage()
+                'message' => "Delete jadwal pembayaran error :".$e->getMessage()
             ]);
         }
     }

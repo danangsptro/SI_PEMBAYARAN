@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/jqvmap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/backend.css') }}">
+    @yield('selec-2')
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
 
@@ -61,6 +62,7 @@
 {{-- <script src="{{ asset('assets/js/jquery.vmap.world.js') }}"></script>
 --}}
 
+@yield('js-select-2')
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
 
@@ -70,7 +72,6 @@
 <script src="{{asset('assets/js/dataTables.buttons.min.js')}}"></script>
 <script src="{{asset('assets/js/buttons.bootstrap4.min.js')}}"></script>
 <script src="{{asset('assets/js/datatables-init.js')}}"></script>
-
 @yield('js')
 
 </html>
