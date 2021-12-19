@@ -41,9 +41,11 @@
                     <a>
                         <form action="{{ route('logout') }}" method="POST" class="">
                             @csrf
-                            <button type="submit" class="btn btn-danger mt-1"><i class="fas fa-sign-out-alt"></i></button>
-                        </form>
+                            <button type="submit" class="btn btn-danger mt-1"><i class="fas fa-sign-out-alt"></i>
                         <p class="m-2">Logout</p>
+                            
+                            </button>
+                        </form>
                     </a>
                 </li>
 
