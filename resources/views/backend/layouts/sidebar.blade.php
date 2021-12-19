@@ -31,7 +31,7 @@
                     <a href="{{ url('/admin/pembayaran') }}"> <i class="menu-icon fa fa-folder"></i>Jadwal Pembayaran
                     </a>
                 </li>
-
+ 
                 <li>
                     <a href="{{ url('/admin/transaksi') }}"> <i class="menu-icon fa fa-folder"></i>Pembayaran SPP
                     </a>
