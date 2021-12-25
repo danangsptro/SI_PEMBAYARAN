@@ -52,7 +52,7 @@ class PembayaranController extends Controller
                 'style' => 'success',
                 'message' => "Data Successfully Added"
             ]);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $message = $e->getMessage();
             return redirect()->back()->with([
                 'style' => 'danger',

@@ -22,20 +22,28 @@
                 </li> --}}
                 <h3 class="menu-title">Data</h3>
 
-                <li>
-                    <a href="{{ url('/admin/siswa') }}"> <i class="menu-icon fa fa-user"></i>Siswa
-                    </a>
-                </li>
+                @if(Auth::user()->role == "kepala-sekolah" || Auth::user()->role == "staf")
+                    <li>
+                        <a href="{{ url('/admin/siswa') }}"> <i class="menu-icon fa fa-user"></i>Siswa
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="{{ url('/admin/pembayaran') }}"> <i class="menu-icon fa fa-calendar"></i>Jadwal Pembayaran
-                    </a>
-                </li>
+                    <li>
+                        <a href="{{ url('/admin/pembayaran') }}"> <i class="menu-icon fa fa-calendar"></i>Jadwal Pembayaran
+                        </a>
+                    </li>
 
-                <li>
-                    <a href="{{ url('/admin/transaksi') }}"> <i class="menu-icon fa fa-folder"></i>Pembayaran SPP
-                    </a>
-                </li>
+                    <li>
+                        <a href="{{ url('/admin/transaksi') }}"> <i class="menu-icon fa fa-folder"></i>Pembayaran SPP
+                        </a>
+                    </li>
+                @else
+                    <li>
+                        <a href="{{ url('/admin/transaksi/transaksi-siswa/'.Auth::user()->id) }}"><i class="fas fa-money-bill-wave"></i>Report Pembayaran</a>
+                    </li>
+                @endif
+
+                
                 {{-- <h3 class="menu-title">Data</h3>
                 <li>
                     <a>

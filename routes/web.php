@@ -35,16 +35,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
         Route::get('/delete/{id}', 'PembayaranController@deletePembayaran');
     });
 
-    Route::prefix('pembayaran-spp')->group( function () {
-        Route::get('/', 'PembayaranController@index');
-        Route::post('/store/{id?}', 'PembayaranController@storePembayaran');
-        Route::get('/delete/{id}', 'PembayaranController@deletePembayaran');
-    });
+    // Route::prefix('pembayaran-spp')->group( function () {
+    //     Route::get('/', 'PembayaranController@index');
+    //     Route::post('/store/{id?}', 'PembayaranController@storePembayaran');
+    //     Route::get('/delete/{id}', 'PembayaranController@deletePembayaran');
+    // });
 
     Route::prefix('transaksi')->group( function () {
         Route::get('/', 'TransaksiController@index');
-        Route::post('/store/{id?}', 'TransaksiController@storePembayaran');
-        Route::get('/delete/{id}', 'TransaksiController@deletePembayaran');
+        Route::post('/store', 'TransaksiController@storeTransaksi');
+        Route::get('/delete/{id}', 'TransaksiController@deleteTransaksi');
+        Route::get('/report/{id}', 'TransaksiController@reportTransaksi');
+        Route::get('/transaksi-siswa/{id}', 'TransaksiController@reportTransaksiSiswa');
+        Route::get('/invoice-pdf/{id}', 'TransaksiController@reportTransaksiSiswaInvoice');
     });
 });
 

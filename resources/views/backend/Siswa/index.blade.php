@@ -100,7 +100,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($siswa as $siswas)
-                                        @if($siswas->role != "Kepala-Sekolah" && $siswas->role != "Staff"  )
+                                        @if($siswas->role != "kepala-sekolah" && $siswas->role != "staf"  )
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $siswas->name }} </td>

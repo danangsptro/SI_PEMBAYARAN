@@ -25,13 +25,30 @@
                                 </div>
                             </div>
                         @endif
+
+                        <form action="{{ url('admin/transaksi') }}" method="GET">
+                            <div class="row text-center m-3">
+                                <div class="col-md-6 d-flex justify-content-center">
+                                    <input type="text" name="search_title_pembayaran" class="form-control"
+                                    value="{{ isset($filters['search_title_pembayaran']) ? $filters['search_title_pembayaran'] : "" }}" placeholder="Search By Title Pembayaran">
+                                    <button type="submit" class="btn btn-success">Cari</button>
+                                </div>
+                            </div>
+
+                        </form>
+
                         <div class="row">
                             @foreach ($pembayaran as $pembayarans)
                                 <div class="col-lg-4">
                                     <div class="card">
-                                        <div class="card-body">
+                                        @if ($pembayarans->id == $pembayaranlast->id)
+                                            <div class="card-body bg-warning">
+                                        @else
+                                            <div class="card-body">  
+                                        @endif
                                         <h5 class="card-title">{{ $pembayarans->title_pembayaran }}</h5>
-                                        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#add{{ $loop->iteration }}">Lakukan Pembayaran</a>
+                                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#add{{ $loop->iteration }}">Lakukan Pembayaran</a>
+                                            <a href="{{ url('/admin/transaksi/report/'.$pembayarans->id)}}" class="btn btn-success">Lihat Report Pembayaran</a>
                                         </div>
                                     </div>
                                 </div>
@@ -40,29 +57,37 @@
                                     <div class="modal-dialog" role="document">
                                       <div class="modal-content">
                                         <div class="modal-header">
-                                          <h5 class="modal-title" id="add{{ $loop->iteration }}Label">Lakukan pembayaran</h5>
+                                          <h5 class="modal-title" id="add{{ $loop->iteration }}Label">Lakukan {{ $pembayarans->title_pembayaran }}</h5>
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
                                         </div>
                                         <div class="modal-body">
-                                          <form action="" method="POST">
+                                          <form action="{{ url('/admin/transaksi/store') }}" method="POST">
+                                                @csrf
                                                 <div class="form-row">
                                                     <div class="form-group col-lg-12">
                                                         <label for="index-surat">Pilih Siswa</label>
+                                                        <input type="hidden" value="{{ $pembayarans->id }}" name="pembayaran_id">
                                                         <select name="user_id" class="form-control" id="siswa">
                                                             <option value="" selected>-- SELECT --</option>
                                                             @foreach($user as $users)
-                                                                <option value="{{ $users->id }}">{{ $users->name }}</option>
+                                                                @if($users->role != "kepala-sekolah" && $users->role != "staf"  )
+                                                                    <option value="{{ $users->id }}">{{ $users->name }}</option>
+                                                                @endif
                                                             @endforeach
                                                         </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-lg-12">
+                                                        <button type="submit" class="btn btn-primary">Submit Pembayaran</button>
                                                     </div>
                                                 </div>
                                           </form>
                                         </div>
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                          <button type="button" class="btn btn-primary">Save changes</button>
                                         </div>
                                       </div>
                                     </div>

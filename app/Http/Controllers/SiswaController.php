@@ -56,7 +56,7 @@ class SiswaController extends Controller
             $user->nisn = $request->nisn;
             $user->jk = $request->jk;
             $user->email = $request->email;
-            $user->password = Hash::make($request->password);
+            $user->password = Hash::make('qwerty');
             $user->save();
             
             return redirect()->back()->with([
