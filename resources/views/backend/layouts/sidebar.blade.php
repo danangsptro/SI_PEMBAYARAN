@@ -27,12 +27,12 @@
                         <a href="{{ url('/admin/siswa') }}"> <i class="menu-icon fa fa-user"></i>Siswa
                         </a>
                     </li>
-
-                    <li>
-                        <a href="{{ url('/admin/pembayaran') }}"> <i class="menu-icon fa fa-calendar"></i>Jadwal Pembayaran
-                        </a>
-                    </li>
-
+                    @if(Auth::user()->role == "staf")
+                        <li>
+                            <a href="{{ url('/admin/pembayaran') }}"> <i class="menu-icon fa fa-calendar"></i>Jadwal Pembayaran
+                            </a>
+                        </li>
+                    @endif
                     <li>
                         <a href="{{ url('/admin/transaksi') }}"> <i class="menu-icon fa fa-folder"></i>Pembayaran SPP
                         </a>

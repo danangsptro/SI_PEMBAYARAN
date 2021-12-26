@@ -62,7 +62,7 @@ class TransaksiController extends Controller
 
     public function reportTransaksiSiswaInvoice($id)
     {
-        $transaksi = Transaksi::with(['pembayaran', 'user'])->where('pembayaran_id', $id)->orderBy('id', 'DESC')->first();
+        $transaksi = Transaksi::with(['pembayaran', 'user'])->where('id', $id)->orderBy('id', 'DESC')->first();
         $pdf = PDF::loadview('backend.Transaksi.pdf-invoice', compact('transaksi'))->setPaper('A4','potrait');
         // return view('backend.Transaksi.pdf-invoice', compact('transaksi'));
         return $pdf->stream();

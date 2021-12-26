@@ -47,7 +47,9 @@
                                             <div class="card-body">  
                                         @endif
                                         <h5 class="card-title">{{ $pembayarans->title_pembayaran }}</h5>
-                                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#add{{ $loop->iteration }}">Lakukan Pembayaran</a>
+                                            @if(Auth::user()->role == "staf")
+                                                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#add{{ $loop->iteration }}">Lakukan Pembayaran</a>
+                                            @endif
                                             <a href="{{ url('/admin/transaksi/report/'.$pembayarans->id)}}" class="btn btn-success">Lihat Report Pembayaran</a>
                                         </div>
                                     </div>
