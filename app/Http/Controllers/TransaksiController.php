@@ -7,6 +7,7 @@ use App\Pembayaran;
 use App\User;
 use App\Transaksi;
 use PDF;
+use PHPUnit\Framework\Test;
 
 class TransaksiController extends Controller
 {
@@ -34,6 +35,13 @@ class TransaksiController extends Controller
     public function storeTransaksi(Request $request)
     {
         $user = User::where('id', $request->user_id)->first();
+        $transaksiCheck = Transaksi::where('pembayaran_id', $request->pembayaran_id)->where('user_id', $request->user_id)->first();
+        if($transaksiCheck) {
+            return redirect()->back()->with([
+                'style' => 'danger',
+                'message' => "you have paid this SPP before"
+            ]);
+        }
         $transaksi = new Transaksi();
         $transaksi->pembayaran_id = $request->pembayaran_id;
         $transaksi->user_id = $request->user_id;
@@ -62,7 +70,7 @@ class TransaksiController extends Controller
 
     public function reportTransaksiSiswaInvoice($id)
     {
-        $transaksi = Transaksi::with(['pembayaran', 'user'])->where('pembayaran_id', $id)->orderBy('id', 'DESC')->first();
+        $transaksi = Transaksi::with(['pembayaran', 'user'])->where('id', $id)->orderBy('id', 'DESC')->first();
         $pdf = PDF::loadview('backend.Transaksi.pdf-invoice', compact('transaksi'))->setPaper('A4','potrait');
         // return view('backend.Transaksi.pdf-invoice', compact('transaksi'));
         return $pdf->stream();
