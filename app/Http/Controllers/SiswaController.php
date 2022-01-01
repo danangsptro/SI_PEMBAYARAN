@@ -88,4 +88,36 @@ class SiswaController extends Controller
             ]);
         }
     }
+
+    public function settingProfile($id) 
+    {
+        $siswa = User::with([])->where('id', $id)->first();
+        return view('backend.siswa.edit', compact('siswa'));
+    }
+
+    public function updateProfile(Request $request, $id=null)
+    {
+        try {
+            $siswa = User::with([])->where('id', $id)->first();
+            $siswa->name = $request->name;
+            $siswa->nisn = $request->nisn;
+            $siswa->jk = $request->jk;
+            if ($request->email != $siswa->email) {
+                $siswa->email = $request->email;
+            }
+            $siswa->password_exist = $request->password_exist;
+            $siswa->password = Hash::make($request->password_exist);
+            $siswa->save();
+            return redirect()->back()->with([
+                'style' => 'success',
+                'message' => "Update profile siswa Successfully"
+            ]);
+        } catch (\Exception $e) {
+            return redirect()->back()->with([
+                'style' => 'success',
+                'message' => "Update profile siswa error :".$e->getMessage()
+            ]);
+        }
+        
+    }
 }

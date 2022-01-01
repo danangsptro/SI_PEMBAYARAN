@@ -41,6 +41,9 @@
                     <li>
                         <a href="{{ url('/admin/transaksi/transaksi-siswa/'.Auth::user()->id) }}"><i class="fas fa-money-bill-wave"></i>Report Pembayaran</a>
                     </li>
+                    <li>
+                        <a href="{{ url('/admin/siswa/set-profile/'.Auth::user()->id) }}"><i class="fas fa-user-alt"></i>Setting Profile</a>
+                    </li>
                 @endif
 
                 
