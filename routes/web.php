@@ -27,6 +27,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function() {
         Route::get('/', 'SiswaController@index');
         Route::post('/store/{id?}', 'SiswaController@storeSiswa');
         Route::get('/delete/{id}', 'SiswaController@deleteSiswa');
+        Route::get('/set-profile/{id}', 'SiswaController@settingProfile');
+        Route::post('/update-profile/{id}', 'SiswaController@updateProfile');
     });
 
     Route::prefix('pembayaran')->group( function () {

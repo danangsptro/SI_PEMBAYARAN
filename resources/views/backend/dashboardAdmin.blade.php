@@ -38,54 +38,57 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="stat-widget-one">
-                        <div class="stat-icon dib"><i class="ti-user text-primary border-primary"></i></div>
-                        <div class="stat-content dib">
-                            <div class="stat-text">Data Siswa</div>
-                            <div class="stat-digit">{{$siswa->count()}}</div>
+
+        @if (Auth::user()->role != "Siswa")
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-one">
+                            <div class="stat-icon dib"><i class="ti-user text-primary border-primary"></i></div>
+                            <div class="stat-content dib">
+                                <div class="stat-text">Data Siswa</div>
+                                <div class="stat-digit">{{$siswa->count()}}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!--/social-box-->
             </div>
-            <!--/social-box-->
-        </div>
-        <!--/.col-->
+            <!--/.col-->
 
 
-        <div class="col-lg-3 col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="stat-widget-one">
-                        <div class="stat-icon dib"><i class="ti-money text-success border-success"></i></div>
-                        <div class="stat-content dib">
-                            <div class="stat-text">Transaksi Pembayaran</div>
-                            <div class="stat-digit">{{$transaksi->count()}}</div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-one">
+                            <div class="stat-icon dib"><i class="ti-money text-success border-success"></i></div>
+                            <div class="stat-content dib">
+                                <div class="stat-text">Transaksi Pembayaran</div>
+                                <div class="stat-digit">{{$transaksi->count()}}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!--/social-box-->
             </div>
-            <!--/social-box-->
-        </div>
-        <!--/.col-->
+            <!--/.col-->
 
 
-        <div class="col-lg-3 col-md-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="stat-widget-one">
-                        <div class="stat-icon dib"><i class="ti-layout-grid2 text-warning border-warning"></i></div>
-                        <div class="stat-content dib">
-                            <div class="stat-text">Data Pembayaran</div>
-                            <div class="stat-digit">{{$pembayaran->count()}}</div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="stat-widget-one">
+                            <div class="stat-icon dib"><i class="ti-layout-grid2 text-warning border-warning"></i></div>
+                            <div class="stat-content dib">
+                                <div class="stat-text">Data Pembayaran</div>
+                                <div class="stat-digit">{{$pembayaran->count()}}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!--/social-box-->
             </div>
-            <!--/social-box-->
-        </div>
         <!--/.col-->
+        @endif
 
     @endsection
