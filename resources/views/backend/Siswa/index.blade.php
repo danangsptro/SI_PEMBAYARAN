@@ -91,6 +91,7 @@
                             <table id="tabel-data" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Nomor</th>
                                         <th>Nama</th>
                                         <th>NISN</th>
@@ -102,6 +103,7 @@
                                     @foreach ($siswa as $siswas)
                                         @if($siswas->role != "kepala-sekolah" && $siswas->role != "staf"  )
                                             <tr>
+                                                <td>{{ $loop->iteration - 2 }}</td>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $siswas->name }} </td>
                                                 <td>{{ $siswas->nisn }}</td>
