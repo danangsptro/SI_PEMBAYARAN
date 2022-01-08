@@ -91,4 +91,17 @@
         <!--/.col-->
         @endif
 
+        @if(Auth::user()->role == "Siswa")
+            <div class="card bg-warning">
+                <div class="card-body">
+                    <div class="stat-widget-one">
+                        <div class="stat-icon dib"><i class="ti-money text-danger border-danger"></i></div>
+                        <div class="stat-content dib">
+                            <div class="stat-text text-danger"><h3><b>{{ $sspBelumBayar }} Bulan SPP BELUM DIBAYAR</b></h3></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+
     @endsection

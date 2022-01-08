@@ -26,6 +26,9 @@
                                 </div>
                             </div>
                         @endif
+                        @if(Auth::user()->role == "kepala-sekolah")
+                            <a href="{{ url('/admin/transaksi/export-report/'.$pembayaran->id) }}" class="btn btn-success">Export Excel</a>
+                        @endif
                         <div class="table-responsive">
                             <table id="tabel-data" class="table table-bordered table-striped">
                                 <thead>

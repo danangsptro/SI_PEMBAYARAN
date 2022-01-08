@@ -38,7 +38,7 @@ class PembayaranController extends Controller
                 $pembayaran->save(); 
     
                 return redirect()->back()->with([
-                    'message'   => 'Update siswa success',
+                    'message'   => 'Pembayaran SPP success',
                     'style'     => 'success' 
                 ]);
     
