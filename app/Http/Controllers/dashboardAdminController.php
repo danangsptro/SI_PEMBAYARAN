@@ -6,6 +6,7 @@ use App\Pembayaran;
 use App\Transaksi;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class dashboardAdminController extends Controller
 {
@@ -13,7 +14,37 @@ class dashboardAdminController extends Controller
     {
         $siswa = User::where('role', 'Siswa')->get();
         $transaksi = Transaksi::get();
-        $pembayaran = Pembayaran::get();
-        return view('backend/dashboardAdmin', compact('siswa', 'transaksi', 'pembayaran'));
+        $pembayaran = Pembayaran::with(['transaksi'])->get();
+        $sspBelumBayar = 0;
+
+        $transaksiPembayaran = $pembayaran->map(function($item, $key){
+            $userId = Auth::user()->id;
+            $status = false;
+            $transaksiId = 0;
+            if(!$item->transaksi) {
+                $status = false;
+            } else {
+                foreach ($item->transaksi as $test) {
+                    if($test->user_id == $userId) {
+                        $status = true;
+                        if($status) {
+                            $transaksiId = $test->id;
+                        }
+                    }
+                }
+            }
+            return [
+                'title' => $item->title_pembayaran,
+                'statuses' => ($status) ? 'sudah bayar' : 'belum bayar',
+                'transaksi_id' => $transaksiId
+            ];
+        });
+
+        foreach ($transaksiPembayaran as $item) {
+            if($item['statuses'] == 'belum bayar') {
+                $sspBelumBayar += 1;
+            }
+        }
+        return view('backend/dashboardAdmin', compact('siswa', 'transaksi', 'pembayaran', 'sspBelumBayar'));
     }
 }

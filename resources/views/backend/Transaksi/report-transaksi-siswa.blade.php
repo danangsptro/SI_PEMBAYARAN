@@ -32,17 +32,24 @@
                                     <tr>
                                         <th>Nomor</th>
                                         <th>Pembayaran</th>
-                                        <th>Invoice</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($transaksi as $data)
+                                    {{-- {{ dd($transaksiPembayaran) }} --}}
+                                    @foreach ($transaksiPembayaran as $data)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $data->pembayaran->title_pembayaran }} </td>
-                                            <td>{{ $data->invoice }}</td>
-                                            <td><a href="{{ url('/admin/transaksi/invoice-pdf/'.$data->id) }}" class="btn btn-warning">Download Invoice</a></td>
+                                            <td>{{ $data['title'] }} </td>
+                                            <td>{{ $data['statuses'] }}</td>
+                                            <td>
+                                                @if ($data['statuses']== "sudah bayar")
+                                                    <a href="{{ url('/admin/transaksi/invoice-pdf/'.$data['transaksi_id']) }}" class="btn btn-warning">Download Invoice</a>
+                                                @else
+                                                    -
+                                                @endif    
+                                            </td>
                                         </tr>     
                                     @endforeach
                                 </tbody>
