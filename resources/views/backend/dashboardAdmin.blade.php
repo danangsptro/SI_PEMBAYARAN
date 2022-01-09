@@ -92,16 +92,36 @@
         @endif
 
         @if(Auth::user()->role == "Siswa")
-            <div class="card bg-warning">
+            @if ($sspBelumBayar == null)
+            <div class="card text-center bg-info" style="padding: 1rem; border-radius:1rem; font-family:'Franklin Gothic Medium'; color:white">
+                <h3>Belum Ada Pembayaran</h3>
+            </div>
+            @else
+            <div class="card">
+                <div class="card-header bg-danger text-center">
+                  <h3 style="color:white">Pemberitahuan!</h3>
+                </div>
                 <div class="card-body">
+
                     <div class="stat-widget-one">
                         <div class="stat-icon dib"><i class="ti-money text-danger border-danger"></i></div>
                         <div class="stat-content dib">
-                            <div class="stat-text text-danger"><h3><b>{{ $sspBelumBayar }} Bulan SPP BELUM DIBAYAR</b></h3></div>
+                            <div class="stat-text text-danger"><h4><b>{{ $sspBelumBayar }} Bulan SPP BELUM DIBAYAR</b></h4></div>
+                            @foreach ($listPembayaran as $item)
+                            @if ($item['statuses'] == "belum bayar")
+                                <br>
+                                <h6>{{$item['title']}}</h6>
+                                <li>{{$item['statuses'] }}</li>
+                                {{-- format date --}}
+                                <li>Tanggal Mulai: {{$item['tgl_mulai'] }}</li>
+                                <li style="color: rgb(255, 0, 0)"><u>Jatuh Tempo: {{$item['jatuh_tempo']}}</u></li>
+                            @endif
+                           @endforeach
                         </div>
                     </div>
                 </div>
-            </div>
+              </div>
+            @endif
         @endif
 
     @endsection

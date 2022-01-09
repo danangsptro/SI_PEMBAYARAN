@@ -6,7 +6,7 @@
 @endsection
 
 @section('backend')
-    
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
@@ -41,11 +41,11 @@
                             @foreach ($pembayaran as $pembayarans)
                                 <div class="col-lg-4">
                                     <div class="card">
-                                        @if ($pembayarans->id == $pembayaranlast->id)
-                                            <div class="card-body bg-warning">
-                                        @else
-                                            <div class="card-body">  
-                                        @endif
+                                        {{-- @if ($pembayarans->id == $pembayaranlast->id) --}}
+                                            {{-- <div class="card-body bg-warning"> --}}
+                                        {{-- @else --}}
+                                            <div class="card-body">
+                                        {{-- @endif --}}
                                         <h5 class="card-title">{{ $pembayarans->title_pembayaran }}</h5>
                                             @if(Auth::user()->role == "staf")
                                                 <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#add{{ $loop->iteration }}">Lakukan Pembayaran</a>
@@ -97,11 +97,11 @@
                             @endforeach
                         </div>
                     </div>
-                </div>   
+                </div>
             </div>
         </div>
     </div>
-    
+
 
     @section('js-select-2')
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>

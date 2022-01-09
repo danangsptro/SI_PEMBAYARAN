@@ -8,6 +8,8 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use function GuzzleHttp\json_encode;
+
 class dashboardAdminController extends Controller
 {
     public function index()
@@ -16,6 +18,7 @@ class dashboardAdminController extends Controller
         $transaksi = Transaksi::get();
         $pembayaran = Pembayaran::with(['transaksi'])->get();
         $sspBelumBayar = 0;
+        $list = [];
 
         $transaksiPembayaran = $pembayaran->map(function($item, $key){
             $userId = Auth::user()->id;
@@ -36,15 +39,17 @@ class dashboardAdminController extends Controller
             return [
                 'title' => $item->title_pembayaran,
                 'statuses' => ($status) ? 'sudah bayar' : 'belum bayar',
-                'transaksi_id' => $transaksiId
+                'transaksi_id' => $transaksiId,
+                'tgl_mulai' => $item->tgl_mulai,
+                'jatuh_tempo' => $item->jatuh_tempo,
             ];
         });
-
+        $listPembayaran = $transaksiPembayaran;
         foreach ($transaksiPembayaran as $item) {
             if($item['statuses'] == 'belum bayar') {
                 $sspBelumBayar += 1;
             }
         }
-        return view('backend/dashboardAdmin', compact('siswa', 'transaksi', 'pembayaran', 'sspBelumBayar'));
+        return view('backend/dashboardAdmin', compact('siswa', 'transaksi', 'pembayaran', 'sspBelumBayar', 'listPembayaran'));
     }
 }

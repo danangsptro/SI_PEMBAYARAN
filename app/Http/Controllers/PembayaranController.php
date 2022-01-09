@@ -23,31 +23,33 @@ class PembayaranController extends Controller
             //     'email' => 'required|string|email|max:255',
             //     'password' => ''
             // ])->validate();
-    
-    
+
+
             if($id){
                 $pembayaran = Pembayaran::where('id', $id)->with([])->first();
                 if(!$pembayaran){
                     return redirect()->back()->with([
                         'message'   => 'Tidak ada siswa dengan id tersebut',
-                        'style'     => 'danger' 
+                        'style'     => 'danger'
                     ]);
                 }
                 $pembayaran->title_pembayaran = $request->title_pembayaran;
                 $pembayaran->tgl_mulai = $request->tgl_mulai;
-                $pembayaran->save(); 
-    
+                $pembayaran->jatuh_tempo = $request->jatuh_tempo;
+                $pembayaran->save();
+
                 return redirect()->back()->with([
                     'message'   => 'Pembayaran SPP success',
-                    'style'     => 'success' 
+                    'style'     => 'success'
                 ]);
-    
+
             }
             $pembayaran = new pembayaran();
             $pembayaran->title_pembayaran = $request->title_pembayaran;
             $pembayaran->tgl_mulai = $request->tgl_mulai;
+            $pembayaran->jatuh_tempo = $request->jatuh_tempo;
             $pembayaran->save();
-            
+
             return redirect()->back()->with([
                 'style' => 'success',
                 'message' => "Data Successfully Added"
@@ -60,7 +62,7 @@ class PembayaranController extends Controller
             ]);
         }
     }
-    
+
     public function deletePembayaran($id)
     {
         try {

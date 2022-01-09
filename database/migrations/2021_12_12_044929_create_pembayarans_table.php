@@ -17,6 +17,7 @@ class CreatePembayaransTable extends Migration
             $table->id();
             $table->string('title_pembayaran')->nullable();
             $table->date('tgl_mulai')->nullable();
+            $table->date('jatuh_tempo')->nullable();
             $table->timestamps();
         });
     }
