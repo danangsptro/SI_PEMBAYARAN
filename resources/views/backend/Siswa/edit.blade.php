@@ -3,7 +3,7 @@
 
 
 @section('backend')
-    
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
@@ -35,8 +35,8 @@
                                     <input type="text" name="name" class="form-control @error('name') ins-invalid @enderror"  value="{{ $siswa->name }}" required>
                                 </div>
                                 <div class="form-group col-lg-6">
-                                    <label for="nisn">NISN</label>
-                                    <input type="text" name="nisn" class="form-control @error('nisn') ins-invalid @enderror"  value="{{ $siswa->nisn }}" required>
+                                    <label for="kelas">Kelas</label>
+                                    <input type="text" name="kelas" class="form-control @error('kelas') ins-invalid @enderror"  value="{{ $siswa->kelas }}" required>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -46,11 +46,11 @@
                                         <option value="Laki-laki {{ $siswa->jk == 'Laki-laki' ? 'selected' : '' }}">Laki-laki</option>
                                         <option value="Perempuan {{ $siswa->jk == 'Perempuan' ? 'selected' : '' }}">Perempuan</option>
                                     </select>
-                                </div> 
+                                </div>
                                 <div class="form-group col-lg-6">
                                     <label for="email">Email</label>
                                     <input type="text" name="email" class="form-control @error('email') ins-invalid @enderror"  value="{{ $siswa->email }}" required>
-                                </div>                                 
+                                </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-lg-12">
@@ -65,11 +65,11 @@
                             </div>
                         </form>
                     </div>
-                </div>   
+                </div>
             </div>
         </div>
     </div>
-    
+
     @section('js')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>

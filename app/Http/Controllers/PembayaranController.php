@@ -16,14 +16,6 @@ class PembayaranController extends Controller
     public function storePembayaran(Request $request, $id=null)
     {
         try {
-            // Validator::make($request->all(),[
-            //     'name' => 'required|string|max:255',
-            //     'nisn'  => 'required',
-            //     'jk' => 'required',
-            //     'email' => 'required|string|email|max:255',
-            //     'password' => ''
-            // ])->validate();
-
 
             if($id){
                 $pembayaran = Pembayaran::where('id', $id)->with([])->first();

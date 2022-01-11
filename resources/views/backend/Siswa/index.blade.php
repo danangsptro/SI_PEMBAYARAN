@@ -34,8 +34,8 @@
                                                 <input type="text" name="name" class="form-control @error('name') ins-invalid @enderror"  value="{{ old('name')}}" required>
                                             </div>
                                             <div class="form-group col-lg-6">
-                                                <label for="nisn">NISN</label>
-                                                <input type="text" name="nisn" class="form-control @error('nisn') ins-invalid @enderror"  value="{{ old('nisn')}}" required>
+                                                <label for="kelas">Kelas</label>
+                                                <input type="text" name="kelas" class="form-control @error('kelas') ins-invalid @enderror"  value="{{ old('kelas')}}" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
@@ -94,7 +94,7 @@
                                         <th>#</th>
                                         <th>Nomor</th>
                                         <th>Nama</th>
-                                        <th>NISN</th>
+                                        <th>KELAS</th>
                                         <th>Jenis Kelamin</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -106,7 +106,7 @@
                                                 <td>{{ $loop->iteration - 2 }}</td>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $siswas->name }} </td>
-                                                <td>{{ $siswas->nisn }}</td>
+                                                <td>{{ $siswas->kelas }}</td>
                                                 <td>{{ $siswas->jk }}</td>
                                                 <td>
                                                     <div class="d-flex justify-content-center">
@@ -131,8 +131,8 @@
                                                                                 <input type="text" name="name" class="form-control @error('name') ins-invalid @enderror"  value="{{ $siswas->name }}" required>
                                                                             </div>
                                                                             <div class="form-group col-lg-6">
-                                                                                <label for="nisn">NISN</label>
-                                                                                <input type="text" name="nisn" class="form-control @error('nisn') ins-invalid @enderror"  value="{{ $siswas->nisn }}" required>
+                                                                                <label for="kelas">Kelas</label>
+                                                                                <input type="text" name="kelas" class="form-control @error('kelas') ins-invalid @enderror"  value="{{ $siswas->kelas }}" required>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-row">

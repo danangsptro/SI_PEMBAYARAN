@@ -15,8 +15,8 @@ class AddNisnJkOnUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('role')->default('pegawai')->after('email');
-            $table->string('nisn')->nullable()->after('role');
-            $table->string('jk')->nullable()->after('nisn');
+            $table->string('kelas')->nullable()->after('role');
+            $table->string('jk')->nullable()->after('kelas');
         });
     }
 
@@ -29,7 +29,7 @@ class AddNisnJkOnUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('role');
-            $table->dropColumn('nisn');
+            $table->dropColumn('kelas');
             $table->dropColumn('jk');
         });
     }

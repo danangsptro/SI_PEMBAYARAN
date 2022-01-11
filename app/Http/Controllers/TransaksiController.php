@@ -48,7 +48,7 @@ class TransaksiController extends Controller
         $transaksi = new Transaksi();
         $transaksi->pembayaran_id = $request->pembayaran_id;
         $transaksi->user_id = $request->user_id;
-        $transaksi->invoice = "PB-SPP-".date('Y-m-d')."-".$user->nisn;
+        $transaksi->invoice = "PB-SPP-".date('Y-m-d')."-".$user->kelas;
         $transaksi->save();
 
         return redirect()->back()->with([
@@ -67,12 +67,12 @@ class TransaksiController extends Controller
     public function exportReportTransaksi($id)
     {
         $transaksi = Transaksi::with(['user'])->where('pembayaran_id', $id)->orderBy('id', 'DESC')->get();
-        
+
         $result = $transaksi->map(function ($item, $key) {
 
             return [
                 'Nama Siswa' => $item->user->name,
-                'NISN' => $item->user->nisn,
+                'KELAS' => $item->user->kelas,
                 'Tanggal Bayar' => $item->created_at,
                 'Invoice' => $item->invoice,
             ];

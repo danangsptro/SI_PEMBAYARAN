@@ -24,7 +24,7 @@ class PembayaranExport implements FromCollection, WithHeadings
     {
         return [
             'Nama Siswa',
-            'NISN',
+            'KELAS',
             'Tanggal Bayar',
             'Invoice',
         ];
