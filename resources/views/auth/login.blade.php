@@ -7,10 +7,12 @@
             <div class="row justify-content-center">
                 <div class="col-lg-12 text-center" style="margin-top: -12rem;">
                     {{-- Tulosan jalan --}}
-                    <marquee behavior="" direction="">
+                    <p style="color: white; font-size: 40px"><i>SELAMAT DATANG DI SMK MATHLA'UL ANWAR <br/> BUARAN JATI KAB. TANGERANG
+
+                    {{-- <marquee behavior="" direction="">
                         <p style="color: white; font-size: 40px"><i>SELAMAT DATANG DI SMK MATHLA'UL ANWAR - BUARAN JATI KAB. TANGERANG
                         </i></p>
-                    </marquee>
+                    </marquee> --}}
                     {{-- tutup tulisan --}}
                 </div>
                 <div class="col-md-8 mt-4">
