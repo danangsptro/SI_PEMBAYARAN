@@ -3,7 +3,7 @@
 
 
 @section('backend')
-    
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
@@ -35,7 +35,7 @@
                                     <tr>
                                         <th>Nomor</th>
                                         <th>Nama Siswa</th>
-                                        <th>NISN</th>
+                                        <th>KELAS</th>
                                         <th>Invoice</th>
                                     </tr>
                                 </thead>
@@ -44,20 +44,20 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $data->user->name }} </td>
-                                            <td>{{ $data->user->nisn }}</td>
+                                            <td>{{ $data->user->kelas }}</td>
                                             <td>{{ $data->invoice }}</td>
-                                        </tr>     
+                                        </tr>
                                     @endforeach
                                 </tbody>
-                                
+
                             </table>
                         </div>
                     </div>
-                </div>   
+                </div>
             </div>
         </div>
     </div>
-    
+
     @section('js')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>

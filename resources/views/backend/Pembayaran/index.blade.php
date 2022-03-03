@@ -3,7 +3,7 @@
 
 
 @section('backend')
-    
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
@@ -14,8 +14,8 @@
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         Add Jadwal Pembayaran
                         </button>
-  
-  
+
+
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -37,13 +37,17 @@
                                                 <label for="tgl_mulai">Tanggal mulai</label>
                                                 <input type="date" id="tgl_mulai" name="tgl_mulai" class="form-control @error('tgl_mulai') ins-invalid @enderror"  value="{{ old('tgl_mulai')}}" required>
                                             </div>
+                                            <div class="form-group col-lg-6">
+                                                <label for="jatuh_tempo">Jatuh Tempo</label>
+                                                <input type="date" id="jatuh_tempo" name="jatuh_tempo" class="form-control @error('jatuh_tempo') ins-invalid @enderror"  value="{{ old('jatuh_tempo')}}" required>
+                                            </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-lg-12">
                                                 <button class="btn btn-success" type="submit">Simpan</button>
                                             </div>
                                         </div>
-                                    </form>     
+                                    </form>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -75,6 +79,7 @@
                                         <th>Nomor</th>
                                         <th>Title</th>
                                         <th>Tanggal Mulai Pembayaran</th>
+                                        <th>Jatuh Tempo</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -84,7 +89,8 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $pembayarans->title_pembayaran }} </td>
                                             <td>{{ $pembayarans->tgl_mulai }}</td>
-                                            <td> 
+                                            <td>{{ $pembayarans->jatuh_tempo }}</td>
+                                            <td>
                                                 <div class="d-flex justify-content-center">
                                                     <a href=""  class="btn btn-warning m-1" data-toggle="modal" data-target="#edit{{ $loop->iteration }}">EDIT</a>
                                                     <a href="{{ url('admin/pembayaran/delete/'.$pembayarans->id) }}" class="btn btn-danger m-1">Hapus</a>
@@ -110,6 +116,10 @@
                                                                             <label for="tgl_mulai">Tanggal mulai</label>
                                                                             <input type="date" id="tgl_mulai" name="tgl_mulai" class="form-control @error('tgl_mulai') ins-invalid @enderror"  value="{{ $pembayarans->tgl_mulai }}" required>
                                                                         </div>
+                                                                        <div class="form-group col-lg-6">
+                                                                            <label for="jatuh_tempo">Jatuh Tempo</label>
+                                                                            <input type="date" id="jatuh_tempo" name="jatuh_tempo" class="form-control @error('jatuh_tempo') ins-invalid @enderror"  value="{{ $pembayarans->jatuh_tempo }}" required>
+                                                                        </div>
                                                                     </div>
                                                                     <div class="form-row">
                                                                         <div class="form-group col-lg-12">
@@ -126,18 +136,18 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                        </tr>    
+                                        </tr>
                                     @endforeach
                                 </tbody>
-                                
+
                             </table>
                         </div>
                     </div>
-                </div>   
+                </div>
             </div>
         </div>
     </div>
-    
+
     @section('js')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>

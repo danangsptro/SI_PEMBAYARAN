@@ -3,7 +3,7 @@
 
 
 @section('backend')
-    
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
@@ -14,8 +14,8 @@
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         Add Data Siswa
                         </button>
-  
-  
+
+
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -34,8 +34,8 @@
                                                 <input type="text" name="name" class="form-control @error('name') ins-invalid @enderror"  value="{{ old('name')}}" required>
                                             </div>
                                             <div class="form-group col-lg-6">
-                                                <label for="nisn">NISN</label>
-                                                <input type="text" name="nisn" class="form-control @error('nisn') ins-invalid @enderror"  value="{{ old('nisn')}}" required>
+                                                <label for="kelas">Kelas</label>
+                                                <input type="text" name="kelas" class="form-control @error('kelas') ins-invalid @enderror"  value="{{ old('kelas')}}" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
@@ -45,11 +45,11 @@
                                                     <option value="Laki-laki">Laki-laki</option>
                                                     <option value="Perempuan">Perempuan</option>
                                                 </select>
-                                            </div> 
+                                            </div>
                                             <div class="form-group col-lg-6">
                                                 <label for="email">Email</label>
                                                 <input type="text" name="email" class="form-control @error('email') ins-invalid @enderror"  value="{{ old('email')}}" required>
-                                            </div>                                 
+                                            </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-lg-12">
@@ -62,7 +62,7 @@
                                                 <button class="btn btn-success" type="submit">Simpan</button>
                                             </div>
                                         </div>
-                                    </form>     
+                                    </form>
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -91,9 +91,10 @@
                             <table id="tabel-data" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Nomor</th>
                                         <th>Nama</th>
-                                        <th>NISN</th>
+                                        <th>KELAS</th>
                                         <th>Jenis Kelamin</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -102,11 +103,12 @@
                                     @foreach ($siswa as $siswas)
                                         @if($siswas->role != "kepala-sekolah" && $siswas->role != "staf"  )
                                             <tr>
+                                                <td>{{ $loop->iteration - 2 }}</td>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $siswas->name }} </td>
-                                                <td>{{ $siswas->nisn }}</td>
+                                                <td>{{ $siswas->kelas }}</td>
                                                 <td>{{ $siswas->jk }}</td>
-                                                <td> 
+                                                <td>
                                                     <div class="d-flex justify-content-center">
                                                         <a href=""  class="btn btn-warning m-1" data-toggle="modal" data-target="#edit{{ $loop->iteration }}">EDIT</a>
                                                         <a href="{{ url('admin/siswa/delete/'.$siswas->id) }}" class="btn btn-danger m-1">Hapus</a>
@@ -129,22 +131,22 @@
                                                                                 <input type="text" name="name" class="form-control @error('name') ins-invalid @enderror"  value="{{ $siswas->name }}" required>
                                                                             </div>
                                                                             <div class="form-group col-lg-6">
-                                                                                <label for="nisn">NISN</label>
-                                                                                <input type="text" name="nisn" class="form-control @error('nisn') ins-invalid @enderror"  value="{{ $siswas->nisn }}" required>
+                                                                                <label for="kelas">Kelas</label>
+                                                                                <input type="text" name="kelas" class="form-control @error('kelas') ins-invalid @enderror"  value="{{ $siswas->kelas }}" required>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-row">
                                                                             <div class="form-group col-lg-6">
                                                                                 <label for="jk">Jenis Kelamin</label>
                                                                                 <select class="form-control" id="exampleFormControlSelect1" name="jk">
-                                                                                    <option value="Laki-laki {{ $siswas->jk == 'Laki-laki' ? 'selected' : '' }}">Laki-laki</option>
-                                                                                    <option value="Perempuan {{ $siswas->jk == 'Perempuan' ? 'selected' : '' }}">Perempuan</option>
+                                                                                    <option value="Laki-laki">Laki-laki</option>
+                                                                                    <option value="Perempuan ">Perempuan</option>
                                                                                 </select>
-                                                                            </div> 
+                                                                            </div>
                                                                             <div class="form-group col-lg-6">
                                                                                 <label for="email">Email</label>
                                                                                 <input type="text" name="email" class="form-control @error('email') ins-invalid @enderror"  value="{{ $siswas->email }}" required>
-                                                                            </div>                                 
+                                                                            </div>
                                                                         </div>
                                                                         <div class="form-row">
                                                                             <div class="form-group col-lg-12">
@@ -167,19 +169,19 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                            </tr>     
+                                            </tr>
                                         @endif
                                     @endforeach
                                 </tbody>
-                                
+
                             </table>
                         </div>
                     </div>
-                </div>   
+                </div>
             </div>
         </div>
     </div>
-    
+
     @section('js')
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>

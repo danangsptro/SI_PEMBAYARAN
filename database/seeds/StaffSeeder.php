@@ -16,7 +16,7 @@ class StaffSeeder extends Seeder
                 'name'      => 'Staff',
                 'email'     => 'staf@staf.staf',
                 'role'      => 'staf',
-                'nisn'      => 'staf',
+                'kelas'      => '-',
                 'jk'        => 'PL',
                 'password'  => Hash::make('q1w2e3r4'),
             ]

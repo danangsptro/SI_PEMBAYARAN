@@ -19,46 +19,37 @@ class SiswaController extends Controller
     public function storeSiswa(Request $request, $id=null)
     {
         try {
-            // Validator::make($request->all(),[
-            //     'name' => 'required|string|max:255',
-            //     'nisn'  => 'required',
-            //     'jk' => 'required',
-            //     'email' => 'required|string|email|max:255',
-            //     'password' => ''
-            // ])->validate();
-    
-    
             if($id){
                 $user = User::where('id', $id)->with([])->first();
                 if(!$user){
                     return redirect()->back()->with([
                         'message'   => 'Tidak ada siswa dengan id tersebut',
-                        'style'     => 'danger' 
+                        'style'     => 'danger'
                     ]);
                 }
                 $user->name = $request->name;
                 $user->role = "Siswa";
-                $user->nisn = $request->nisn;
+                $user->kelas = $request->kelas;
                 $user->jk = $request->jk;
                 $user->password_exist = $request->password_exist;
                 $user->password = Hash::make($request->password_exist);
-                $user->save(); 
-    
+                $user->save();
+
                 return redirect()->back()->with([
                     'message'   => 'Update siswa success',
-                    'style'     => 'success' 
+                    'style'     => 'success'
                 ]);
-    
+
             }
             $user = new User();
             $user->name = $request->name;
             $user->role = "Siswa";
-            $user->nisn = $request->nisn;
+            $user->kelas = $request->kelas;
             $user->jk = $request->jk;
             $user->email = $request->email;
             $user->password = Hash::make('qwerty');
             $user->save();
-            
+
             return redirect()->back()->with([
                 'style' => 'success',
                 'message' => "Data Successfully Added"
@@ -71,7 +62,7 @@ class SiswaController extends Controller
             ]);
         }
     }
-    
+
     public function deleteSiswa($id)
     {
         try {
@@ -89,7 +80,7 @@ class SiswaController extends Controller
         }
     }
 
-    public function settingProfile($id) 
+    public function settingProfile($id)
     {
         $siswa = User::with([])->where('id', $id)->first();
         return view('backend.siswa.edit', compact('siswa'));
@@ -100,7 +91,7 @@ class SiswaController extends Controller
         try {
             $siswa = User::with([])->where('id', $id)->first();
             $siswa->name = $request->name;
-            $siswa->nisn = $request->nisn;
+            $siswa->kelas = $request->kelas;
             $siswa->jk = $request->jk;
             if ($request->email != $siswa->email) {
                 $siswa->email = $request->email;
@@ -118,6 +109,6 @@ class SiswaController extends Controller
                 'message' => "Update profile siswa error :".$e->getMessage()
             ]);
         }
-        
+
     }
 }
