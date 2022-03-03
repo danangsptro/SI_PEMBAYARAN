@@ -43,8 +43,8 @@
                                 <div class="form-group col-lg-6">
                                     <label for="jk">Jenis Kelamin</label>
                                     <select class="form-control" id="exampleFormControlSelect1" name="jk">
-                                        <option value="Laki-laki {{ $siswa->jk == 'Laki-laki' ? 'selected' : '' }}">Laki-laki</option>
-                                        <option value="Perempuan {{ $siswa->jk == 'Perempuan' ? 'selected' : '' }}">Perempuan</option>
+                                        <option value="Laki-laki" {{ $siswa->jk == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                                        <option value="Perempuan" {{ $siswa->jk == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                                     </select>
                                 </div> 
                                 <div class="form-group col-lg-6">
